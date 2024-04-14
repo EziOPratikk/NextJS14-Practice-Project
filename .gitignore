@@ -1,0 +1,7 @@
+/.next
+
+# modules
+/node_modules
+
+# environment_variables
+/.env

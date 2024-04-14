@@ -1,0 +1,48 @@
+.links {
+  margin-right: 2rem;
+}
+
+.links:hover {
+  color: var(--btn-color);
+}
+
+.active,
+.active:hover,
+.active:focus {
+  background-color: var(--btn-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  color: black;
+  font-weight: 800;
+}
+
+.sidebarContainer,
+.hamburgerMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .linksContainer {
+    display: none;
+  }
+
+  .hamburgerMenu {
+    display: inline;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+  }
+
+  .sidebarContainer {
+    position: absolute;
+    top: 6rem;
+    right: 0;
+    width: 50%;
+    height: calc(100vh - 6rem);
+    background-color: var(--navbar-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+}

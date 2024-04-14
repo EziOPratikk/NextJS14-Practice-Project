@@ -1,0 +1,22 @@
+.spinnerContainer {
+  width: 100%;
+}
+
+.spinner {
+  margin: 0 auto;
+  height: 3rem;
+  width: 3rem;
+  border: 0.2rem solid transparent;
+  border-radius: 50%;
+  border-top: 0.3rem solid var(--btn-color);
+  animation: loader 1s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
