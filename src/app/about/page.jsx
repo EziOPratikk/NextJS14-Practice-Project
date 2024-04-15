@@ -2,6 +2,11 @@ import Image from 'next/image';
 
 import classes from './page.module.css';
 
+export const metadata = {
+  title: 'About Page',
+  description: 'About description',
+};
+
 export default function About() {
   return (
     <div className={classes.aboutContainer}>

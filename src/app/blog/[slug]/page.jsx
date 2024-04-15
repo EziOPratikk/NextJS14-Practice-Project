@@ -3,6 +3,17 @@ import Image from 'next/image';
 import classes from './page.module.css';
 import { handleGetSpecificPost, handleGetSpecificUser } from '@/lib/data';
 
+export async function generateMetadata({params}) {
+  const slug = params.slug;
+  
+  const post = await handleGetSpecificPost(slug);
+
+  return {
+    title: post.title,
+    description: post.description,
+  }
+}
+
 export default async function SinglePostBlog({ params }) {
   const slug = params.slug;
 
