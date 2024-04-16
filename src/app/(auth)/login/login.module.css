@@ -1,0 +1,40 @@
+.loginContainer {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+
+.loginContainer > h1 {
+  margin: 1rem 0;
+}
+
+.loginImgContainer :nth-child(2) {
+  display: block;
+  margin: 1rem 0;
+  font-size: 0.8rem;
+}
+
+.loginForm > input {
+  margin: auto;
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.registerLink {
+  font-size: 0.8rem;
+  color: var(--btn-color);
+  text-decoration: underline;
+  display: block;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.githubForm > button {
+  margin: 1rem auto 0 auto;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
