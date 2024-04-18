@@ -40,12 +40,12 @@ export function handleGetUsers() {
   return users;
 }
 
-export function handleGetSpecificUser(id) {
+export function handleGetSpecificUser(username) {
   noStore();
 
   handleDBConnection();
 
-  const user = User.findById(id)
+  const user = User.findOne({ username: username })
     .then((user) => {
       return user;
     })
