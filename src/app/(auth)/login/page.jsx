@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
-import classes from './login.module.css';
-import { handleGitHubLogin } from '@/lib/action';
+import LoginForm from '@/components/auth/LoginForm';
 import { handleUserLogin } from '@/lib/action';
+import { handleGitHubLogin } from '@/lib/action';
+import classes from './login.module.css';
 
 export const metadata = {
   title: 'Login',
@@ -29,19 +29,7 @@ export default async function Login() {
           Login icons created by Prosymbols Premium - Flaticon
         </a>
       </div>
-      <form action={handleUserLogin} className={classes.loginForm}>
-        <input type='text' name='username' placeholder='Username' required />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          required
-        />
-        <Link href='/register' className={classes.registerLink}>
-          Don't have an account?
-        </Link>
-        <button>Login</button>
-      </form>
+      <LoginForm onUserLogin={handleUserLogin} />
       <form action={handleGitHubLogin} className={classes.githubForm}>
         <button type='submit'>
           <span className={classes.buttonIcon}>
