@@ -20,11 +20,11 @@ export async function handleAddUser(previousState, formData) {
   const existingEmail = await User.findOne({ email: inputData.email });
 
   if (existingUser) {
-    return { error: 'Username is already taken' };
+    return { success: false, message: 'Username is already taken' };
   }
 
   if (existingEmail) {
-    return { error: 'Email is already in use' };
+    return { success: false, message: 'Email is already in use' };
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -60,7 +60,7 @@ export async function handleDeleteUser(formData) {
       return { success: true, message: 'User removed successfully!' };
     })
     .catch((_) => {
-      return { message: 'Failed to remove user' };
+      return { success: false, message: 'Failed to remove user' };
     });
 }
 
@@ -80,7 +80,10 @@ export async function handleAddPost(previousState, formData) {
   });
 
   await newPost.save();
+  revalidatePath('/blog');
   revalidatePath('/admin');
+
+  return { success: true, message: 'Post added successfully' };
 }
 
 // Delete Post
@@ -99,7 +102,7 @@ export async function handleDeletePost(formData) {
       return { success: true, message: 'Post removed successfully!' };
     })
     .catch((_) => {
-      return { message: 'Failed to remove post' };
+      return { success: false, message: 'Failed to remove post' };
     });
 }
 
@@ -122,7 +125,7 @@ export async function handleUserRegister(previousState, formData) {
   const inputData = Object.fromEntries(formData);
 
   if (inputData.password !== inputData['confirm-password']) {
-    return { error: 'Passwords do not match' };
+    return { success: false, message: 'Passwords do not match' };
   }
 
   handleDBConnection();
@@ -133,11 +136,11 @@ export async function handleUserRegister(previousState, formData) {
   const existingEmail = await User.findOne({ email: inputData.email });
 
   if (existingUser) {
-    return { error: 'Username is already taken' };
+    return { success: false, message: 'Username is already taken' };
   }
 
   if (existingEmail) {
-    return { error: 'Email is already in use' };
+    return { success: false, message: 'Email is already in use' };
   }
 
   // hashing password using bcryptjs npm library
@@ -169,7 +172,7 @@ export async function handleUserLogin(previousState, formData) {
     return { success: true, message: 'Logged in successfully!' };
   } catch (error) {
     if (error.message.includes('CredentialsSignin')) {
-      return { error: 'Invalid username or password' };
+      return { success: false, message: 'Invalid username or password' };
     }
 
     throw error;
