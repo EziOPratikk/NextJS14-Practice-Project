@@ -1,0 +1,32 @@
+.contactContainer {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.leftContainer {
+  flex: 1;
+  text-align: center;
+}
+
+.rightContainer {
+  flex: 2;
+}
+
+.rightContainer h2 {
+  text-align: center;
+  color: var(--btn-color);
+}
+
+@media (max-width: 768px) {
+  .contactContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .leftContainer {
+    margin-top: 1rem;
+  }
+}
