@@ -8,7 +8,7 @@ export default function PostItem(props) {
     <li className={classes.itemContainer}>
       <div className={classes.imgContainer}>
         <Image
-          src={props.post.image}
+          src={props.post.image ? props.post.image : '/images/no-image.png'}
           alt={'a ' + props.post.title + ' image'}
           width={200}
           height={400}
