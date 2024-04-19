@@ -3,15 +3,15 @@ import Image from 'next/image';
 import classes from './page.module.css';
 import { handleGetSpecificPost, handleGetSpecificUser } from '@/lib/data';
 
-export async function generateMetadata({params}) {
+export async function generateMetadata({ params }) {
   const slug = params.slug;
-  
+
   const post = await handleGetSpecificPost(slug);
 
   return {
     title: post.title,
     description: post.description,
-  }
+  };
 }
 
 export default async function SinglePostBlog({ params }) {
@@ -19,14 +19,14 @@ export default async function SinglePostBlog({ params }) {
 
   const post = await handleGetSpecificPost(slug);
 
-  const user = await handleGetSpecificUser(post.userId);
+  const user = await handleGetSpecificUser(post.username);
 
   return (
     <div className={classes.singlePostContainer}>
       <div className={classes.leftContainer}>
         <div className={classes.imgContainer}>
           <Image
-            src={post.image}
+            src={post.image ? post.image : '/images/no-image.png'}
             alt={'a ' + post.title + ' image'}
             fill
             className={classes.img}
@@ -54,7 +54,7 @@ export default async function SinglePostBlog({ params }) {
                 </tr>
                 <tr>
                   <td>{user.username}</td>
-                  <td>{post.createdAt}</td>
+                  <td>{post.createdAt.toString().substring(0, 15)}</td>
                 </tr>
               </tbody>
             </table>
