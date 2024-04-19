@@ -1,0 +1,11 @@
+.notFoundContainer {
+  max-width: 80%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.notFoundContainer :nth-child(2) {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
