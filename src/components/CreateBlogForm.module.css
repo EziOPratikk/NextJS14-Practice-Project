@@ -1,0 +1,19 @@
+.form input,
+.form textarea {
+  display: block;
+  margin: 1rem auto;
+  min-width: 90%;
+}
+
+.actions {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.actions > button {
+  min-width: 90%;
+}
+
+.actions > button:hover {
+  transform: translate(0, -0.2rem);
+}
