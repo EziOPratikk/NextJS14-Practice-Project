@@ -20,8 +20,8 @@ const routes = [
     path: '/about',
   },
   {
-    title: 'Contact',
-    path: '/contact',
+    title: 'Create Blog',
+    path: '/create-blog',
   },
   {
     title: 'Blog',
@@ -29,13 +29,10 @@ const routes = [
   },
 ];
 
-export default function NavigationRoutes() {
+export default function NavigationRoutes(props) {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 
   const pathName = usePathname();
-
-  const isLoggedIn = false;
-  const isAdmin = false;
 
   function handleOpenSidebar() {
     setIsOpenSidebar((prevValue) => !prevValue);
@@ -56,9 +53,9 @@ export default function NavigationRoutes() {
   }
 
   function handleCheckAuth() {
-    return isLoggedIn ? (
+    return props.session?.user ? (
       <Fragment>
-        {isAdmin && (
+        {props.session?.user?.isAdmin && (
           <Link
             href='/admin'
             className={`${classes.links} ${
@@ -68,7 +65,9 @@ export default function NavigationRoutes() {
             Admin
           </Link>
         )}
-        <button className={classes.links}>Logout</button>
+        <form action={props.onLogout} className={classes.form}>
+          <button>Logout</button>
+        </form>
       </Fragment>
     ) : (
       <Link
