@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import classes from './page.module.css';
 
@@ -15,8 +16,12 @@ export default function Home() {
           science.
         </p>
         <div className={classes.btnContainer}>
-          <button>Learn More</button>
-          <button>Get in Touch</button>
+          <button>
+            <Link href='/about'>Learn More</Link>
+          </button>
+          <button>
+            <Link href='/create-blog'>Create Your Blog</Link>
+          </button>
         </div>
       </div>
       <div className={classes.rightContainer}>
