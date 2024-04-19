@@ -23,6 +23,8 @@ export const authConfig = {
       const user = auth?.user;
       const isOnAdminPage = request.nextUrl?.pathname.startsWith('/admin');
       const isOnBlogPage = request.nextUrl?.pathname.startsWith('/blog');
+      const isOnCreateBlogPage =
+        request.nextUrl?.pathname.startsWith('/create-blog');
       const isOnLoginPage = request.nextUrl?.pathname.startsWith('/login');
 
       // Only admin can see admin page
@@ -31,7 +33,7 @@ export const authConfig = {
       }
 
       // Only authenticated can see blog page
-      if (isOnBlogPage && !user) {
+      if ((isOnBlogPage || isOnCreateBlogPage) && !user) {
         return false;
       }
 
